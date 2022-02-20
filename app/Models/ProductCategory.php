@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductCategory extends Model
 {
     use HasFactory, SoftDeletes;
-
+    
     protected $fillable = [
-        'name'
-    ];
+        'name', 
+    ];    
 
     public function products()
     {
-        return $this->hasMany(Transaction::class, 'categories_id', 'id');
+        return $this->hasMany(Product::class, 'categories_id', 'id');
     }
 }
